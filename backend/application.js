@@ -4,6 +4,7 @@ import { connectDB } from './cfg/db.js';
 import { auth } from 'express-openid-connect';
 import routes from './routes/routes.js';
 
+
 dotenv.config();
 
 const config = {
@@ -19,6 +20,7 @@ const config = {
 const app = express();
 app.use(auth(config));
 app.use(express.json());
+
 app.use('/', routes);
 
 const PORT = process.env.PORT;

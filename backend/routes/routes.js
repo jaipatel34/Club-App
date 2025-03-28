@@ -1,16 +1,20 @@
 import express from 'express';
-import { getClubs, createClub, deleteClub, updateClub } from '../controllers/club.controller.js';
+import { getClubs, createClub, deleteClub, updateClub, joinClub, leaveClub } from '../controllers/club.controller.js';
 const router = express.Router();
 import pkg from 'express-openid-connect';
 const { requiresAuth } = pkg;
 
 router.get("/", getClubs);
 
-router.post("/", createClub);
+router.post("/", requiresAuth(), createClub); 
 
-router.put("/:id", updateClub);
+router.put("/:id", requiresAuth(), checkClubAdmin, updateClub); // Requires admin check for updating clubs
 
-router.delete("/:id", deleteClub);
+router.delete("/:id", requiresAuth(), checkClubAdmin, deleteClub); // Requires admin check for deleting clubs
+
+router.post("/:id/join", requiresAuth(), joinClub); 
+
+router.post("/:id/leave", leaveClub);
 
 // This will send a response to the client from a third party middleware I used called auth0
 // It provides two routes, /login and /logout, and the middleware will handle the authentication process
