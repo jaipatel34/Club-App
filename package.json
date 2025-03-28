@@ -1,0 +1,27 @@
+{
+  "name": "club-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app": "node ./backend/application.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaipatel34/Club-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaipatel34/Club-App/issues"
+  },
+  "homepage": "https://github.com/jaipatel34/Club-App#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-oauth2-jwt-bearer": "^1.6.1",
+    "express-openid-connect": "^2.18.0",
+    "mongoose": "^8.13.0"
+  }
+}
